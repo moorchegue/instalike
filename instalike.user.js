@@ -17,7 +17,7 @@ async function like_all() {
     var event_object = document.createEvent('Events');
     event_object.initEvent('click', true, false);
     while (true) {
-        var hearts = document.getElementsByClassName('coreSpriteLikeHeartOpen');
+        var hearts = document.getElementsByClassName('coreSpriteHeartOpen');
         if (hearts.length == 0) {
             await sleep(search_timeout);
             continue;
