@@ -3,7 +3,7 @@
 // @description Instagram auto like
 // @homepag     http://github.com/moorchegue
 // @include     https://www.instagram.com/
-// @version     0.0.1
+// @version     0.0.2
 // ==/UserScript==
 
 like_timeout = 1000;
@@ -17,7 +17,10 @@ async function like_all() {
     var event_object = document.createEvent('Events');
     event_object.initEvent('click', true, false);
     while (true) {
-        var hearts = document.getElementsByClassName('coreSpriteHeartOpen');
+        var hearts = Array.prototype.filter.call(
+            document.getElementsByTagName("span"),
+            function(x) { return x.textContent === "Like"; }
+        );
         if (hearts.length == 0) {
             await sleep(search_timeout);
             continue;
